@@ -1,4 +1,5 @@
 using HelloWorld.Data;
+using HelloWorld.Model;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 
@@ -9,6 +10,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
 builder.Services.AddScoped<CounterState>();
+builder.Services.AddSingleton<UserModel>();
 
 var app = builder.Build();
 

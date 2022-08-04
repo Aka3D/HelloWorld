@@ -1,0 +1,21 @@
+﻿@using HelloWorld.Components;
+
+@page "/eingabe"
+
+<div hidden="@state">
+    <EingabeSync ></EingabeSync>
+</div>
+
+
+<button @onclick="bye">
+    Ein-/Ausblenden
+</button>
+
+@code {
+    public bool state { get; set; } = false;
+
+    public void bye()
+    {
+        state = !state;
+    }
+}

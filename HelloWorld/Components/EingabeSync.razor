@@ -1,0 +1,13 @@
+﻿<h3>EingabeSync</h3>
+
+<input @bind="TextValue" @bind:event="oninput">
+
+</input>
+
+<p class="cw-320 mt-2">
+    Text: <b>@TextValue</b>
+</p>
+
+@code {
+    string TextValue { get; set; } = "nope";
+}

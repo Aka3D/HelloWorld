@@ -8,73 +8,85 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = HelloWorld
 build_property.RootNamespace = HelloWorld
-build_property.ProjectDir = C:\Users\akg\source\Repos\HelloWorld\HelloWorld\
+build_property.ProjectDir = C:\Users\akg\source\repos\HelloWorld\HelloWorld\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\akg\source\Repos\HelloWorld\HelloWorld
+build_property.MSBuildProjectDirectory = C:\Users\akg\source\repos\HelloWorld\HelloWorld
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/akg/source/Repos/HelloWorld/HelloWorld/App.razor]
+[C:/Users/akg/source/repos/HelloWorld/HelloWorld/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/akg/source/Repos/HelloWorld/HelloWorld/Components/Counter.razor]
+[C:/Users/akg/source/repos/HelloWorld/HelloWorld/Components/Counter.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xDb3VudGVyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/akg/source/Repos/HelloWorld/HelloWorld/Pages/AccesModifier.razor]
+[C:/Users/akg/source/repos/HelloWorld/HelloWorld/Components/EingabeSync.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xFaW5nYWJlU3luYy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/akg/source/repos/HelloWorld/HelloWorld/Pages/AccesModifier.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjZXNNb2RpZmllci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/akg/source/Repos/HelloWorld/HelloWorld/Pages/CounterPage.razor]
+[C:/Users/akg/source/repos/HelloWorld/HelloWorld/Pages/CounterPage.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlclBhZ2UucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/akg/source/Repos/HelloWorld/HelloWorld/Pages/FetchData.razor]
+[C:/Users/akg/source/repos/HelloWorld/HelloWorld/Pages/Eingabe.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWluZ2FiZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/akg/source/repos/HelloWorld/HelloWorld/Pages/FetchData.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmV0Y2hEYXRhLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/akg/source/Repos/HelloWorld/HelloWorld/Pages/FetchData2.razor]
+[C:/Users/akg/source/repos/HelloWorld/HelloWorld/Pages/FetchData2.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmV0Y2hEYXRhMi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/akg/source/Repos/HelloWorld/HelloWorld/Pages/Index.razor]
+[C:/Users/akg/source/repos/HelloWorld/HelloWorld/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/akg/source/Repos/HelloWorld/HelloWorld/Pages/Search.razor]
+[C:/Users/akg/source/repos/HelloWorld/HelloWorld/Pages/Search.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2VhcmNoLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/akg/source/Repos/HelloWorld/HelloWorld/Pages/Url.razor]
+[C:/Users/akg/source/repos/HelloWorld/HelloWorld/Pages/Url.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXJsLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/akg/source/Repos/HelloWorld/HelloWorld/Shared/SurveyPrompt.razor]
+[C:/Users/akg/source/repos/HelloWorld/HelloWorld/Pages/WatoFormular.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcV2F0b0Zvcm11bGFyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/akg/source/repos/HelloWorld/HelloWorld/Shared/SurveyPrompt.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/akg/source/Repos/HelloWorld/HelloWorld/_Imports.razor]
+[C:/Users/akg/source/repos/HelloWorld/HelloWorld/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/akg/source/Repos/HelloWorld/HelloWorld/Shared/MainLayout.razor]
+[C:/Users/akg/source/repos/HelloWorld/HelloWorld/Shared/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-rjsnmbmqdn
 
-[C:/Users/akg/source/Repos/HelloWorld/HelloWorld/Shared/NavMenu.razor]
+[C:/Users/akg/source/repos/HelloWorld/HelloWorld/Shared/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-v4ipw2o6j7
 
-[C:/Users/akg/source/Repos/HelloWorld/HelloWorld/Pages/Error.cshtml]
+[C:/Users/akg/source/repos/HelloWorld/HelloWorld/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/akg/source/Repos/HelloWorld/HelloWorld/Pages/_Host.cshtml]
+[C:/Users/akg/source/repos/HelloWorld/HelloWorld/Pages/_Host.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0hvc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/akg/source/Repos/HelloWorld/HelloWorld/Pages/_Layout.cshtml]
+[C:/Users/akg/source/repos/HelloWorld/HelloWorld/Pages/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0xheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
