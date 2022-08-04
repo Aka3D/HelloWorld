@@ -1,0 +1,27 @@
+﻿@using HelloWorld.Components;
+@using HelloWorld.Data;
+
+@page "/counter"
+
+<PageTitle>Counter: @@currentCount</PageTitle>
+
+<Counter></Counter>
+<Counter></Counter>
+
+
+
+@code {
+    private int currentCount = 0;
+
+    private void IncrementCount()
+    {
+        if (currentCount == 15)
+        {
+            //geht nicht über 15
+        }
+        else
+        {
+            currentCount++;
+        }
+    }
+}

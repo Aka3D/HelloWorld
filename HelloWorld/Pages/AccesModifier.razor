@@ -1,0 +1,42 @@
+﻿@page "/accessmodifier"
+
+<h3>Access Modifier</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Access Modifier</th>
+            <th>Beschreibung</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr data-widget="expandable-table" aria-expanded="false">
+            <td>public</td>
+            <td>Der Code kann überall verwendet werden.</td>
+        </tr>
+        <tr data-widget="expandable-table" aria-expanded="false">
+            <td>protected internal</td>
+            <td>Verwendbar innerhalb einer Klasse, im nicht abgeleiteten Klassen vom gleichen Assebmly als auch in abgeleiteten Klassen, egal ob vom gleichen Assembly oder nicht</td>
+        </tr>
+        <tr data-widget="expandable-table" aria-expanded="false">
+            <td>protected</td>
+            <td>Verwendbar innerhalb einer Klasse als auch in abgeleiteten Klassen, egal ob vom gleichen Assembly oder nicht</td>
+        </tr>
+        <tr data-widget="expandable-table" aria-expanded="false">
+            <td>internal</td>
+            <td>verwendbar innerhalb einer Klasse, im gleichen Assembly sowohl auch alle abgeleiteten Klassen vom gleichen Assembly</td>
+        </tr>
+        <tr data-widget="expandable-table" aria-expanded="false">
+            <td>private protected</td>
+            <td>Nur verwendbar innerhalb einer Klasse und auch alle abgeleiteten Klassen</td>
+        </tr>
+        <tr data-widget="expandable-table" aria-expanded="false">
+            <td>private</td>
+            <td>Nur verwendbar innerhalb einer Klasse</td>
+        </tr>
+    </tbody>
+</table>
+
+@code {
+
+}

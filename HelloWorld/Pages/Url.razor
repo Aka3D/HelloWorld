@@ -1,0 +1,8 @@
+﻿@page "/url/{text?}"
+
+<h1>Blazor ist @Text!</h1>
+
+@code {
+    [Parameter]
+    public string? Text { get; set; }
+}
