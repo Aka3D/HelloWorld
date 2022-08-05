@@ -1,0 +1,28 @@
+﻿@page "/editform"
+
+<h3>Editform</h3>
+
+<EditForm Model="@newEditformModel" OnValidSubmit="AddTask">
+    <InputText @bind-Value="newEditformModel.Task"></InputText>
+    <button type="submit">Add Task</button>
+</EditForm>
+
+<ul>
+    @foreach(var task in editformList)
+    {
+        <li>
+            @task.Task
+        </li>
+    }
+</ul>
+
+@code {
+    private List<EditformModel> editformList = new List<EditformModel>();
+    private EditformModel newEditformModel = new EditformModel();             /*<--Make a new instance of the Model*/
+
+    private void AddTask()
+    {
+        editformList.Add(newEditformModel);                                   /*<--Add new Task in Model*/
+        newEditformModel = new EditformModel();                               /*<--To reset that value*/
+    }
+}

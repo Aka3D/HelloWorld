@@ -35,6 +35,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlclBhZ2UucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/akg/source/repos/HelloWorld/HelloWorld/Pages/Editform.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdGZvcm0ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/akg/source/repos/HelloWorld/HelloWorld/Pages/Eingabe.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWluZ2FiZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
