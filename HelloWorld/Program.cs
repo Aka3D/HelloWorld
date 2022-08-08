@@ -11,6 +11,8 @@ builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
 builder.Services.AddScoped<CounterState>();
 
+builder.Services.AddHttpClient(); //Required for REST API
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

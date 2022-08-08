@@ -1,0 +1,72 @@
+﻿@page "/api"
+@using System.Text.Json
+@using System.Text.Json.Serialization;
+@inject IHttpClientFactory ClientFactory
+
+<h1>Call web API from a Blazor Server Razor component</h1>
+
+@if (getBranchesError)
+{
+    <p>Unable to get branches from GitHub. Please try again later.</p>
+}
+else
+{
+    <ul>
+        @foreach (var branch in branches)
+        {
+            <li>@branch.Name</li>
+        }
+    </ul>
+}
+
+@code {
+    private IEnumerable<GitHubBranch> branches = Array.Empty<GitHubBranch>();
+    private bool getBranchesError;
+    private bool shouldRender;
+
+    protected override bool ShouldRender() => shouldRender;
+
+    protected override async Task OnInitializedAsync()
+    {
+        // create request object
+        var request = new HttpRequestMessage(HttpMethod.Get, "https://remote.proffix.net:11011/pxapi/V4/PRO/Login");
+
+        Login login = new Login
+            {
+                Benutzer = "Gast",
+                Passwort = "16ec7cb001be0525f9af1a96fd5ea26466b2e75ef3e96e881bcb7149cd7598da",
+                Datenbank = { Name = "DEMODB"},
+                Module = { "VOL" }
+            };
+        // set request body
+        string serializedString = System.Text.Json.JsonSerializer.Serialize(login);
+        request.Content = new String(serializedString);
+        //request.Headers.Authorization = new AuthenticationHeaderValue("Gast", "my-token");
+
+        request.Headers.Add("Accept", "application/json");
+        request.Headers.Add("User-Agent", "HttpClientFactory-Sample");
+
+        var client = ClientFactory.CreateClient();
+
+        var response = await client.SendAsync(request);
+
+        if (response.IsSuccessStatusCode)
+        {
+            //using var responseStream = await response.Content.ReadAsStreamAsync();
+            //branches = await JsonSerializer.DeserializeAsync
+           //     <IEnumerable<GitHubBranch>>(responseStream);
+        }
+        else
+        {
+            getBranchesError = true;
+        }
+
+        shouldRender = true;
+    }
+
+    public class GitHubBranch
+    {
+        [JsonPropertyName("name")]
+        public string Name { get; set; }
+    }
+}

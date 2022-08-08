@@ -8,21 +8,8 @@
 
   <ItemGroup>
     <Content Remove="Components\TextBox.razor" />
-    <Content Remove="Pages\Svg.razor" />
     <Content Remove="Pages\SvgTest.razor" />
     <Content Remove="Pages\Test.razor" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <UpToDateCheckInput Remove="Pages\Svg.razor" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <_ContentIncludedByDefault Remove="Pages\Svg.razor" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="Pages\Svg.razor" />
   </ItemGroup>
 
 </Project>
