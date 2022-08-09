@@ -3,9 +3,32 @@
     public class Datenbank
     {
         public string Name { get; set; }
+
+        //Konstruktor
+        public Datenbank(string name)
+        {
+            Name = name;
+        }
     }
+
     public class Login
     {
+        //Konstrukor
+        public Login(string benutzer, string passwort, Datenbank datenbank, IList<string> module)
+        {
+            Benutzer = benutzer;
+            Passwort = passwort;
+            Datenbank = datenbank;
+            Module = module;
+        }
+        //Nicht verwendet
+        public Login(string benutzer, string passwort, Datenbank datenbank)
+        {
+            Benutzer = benutzer;
+            Passwort = passwort;
+            Datenbank = datenbank;
+            Module = new List<string> { "VOL" };
+        }
         /// <summary>
         /// The user who wants access
         /// </summary>

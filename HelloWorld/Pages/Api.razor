@@ -1,72 +1,107 @@
 ﻿@page "/api"
+@using System.Text;
 @using System.Text.Json
 @using System.Text.Json.Serialization;
+@using Newtonsoft.Json;
+@using System.Net.Http.Headers;
+@using Microsoft.Extensions.Primitives;
+@using System.Linq;
+@using System.Net.Http:
+@using System.Reflection
+@using Newtonsoft.Json.Linq
+
 @inject IHttpClientFactory ClientFactory
+
+
 
 <h1>Call web API from a Blazor Server Razor component</h1>
 
+
 @if (getBranchesError)
 {
-    <p>Unable to get branches from GitHub. Please try again later.</p>
+    <p>Unable to get an answer from Proffix. Please try again later.</p>
 }
 else
 {
-    <ul>
-        @foreach (var branch in branches)
-        {
-            <li>@branch.Name</li>
-        }
-    </ul>
+    @session
+    <br />
+    <p>
+        Dokumentennummer: @meta1
+        <br />
+        Referenztext: @meta2    
+    </p>
 }
 
 @code {
-    private IEnumerable<GitHubBranch> branches = Array.Empty<GitHubBranch>();
     private bool getBranchesError;
     private bool shouldRender;
+    public string session;
+    public string meta1;
+    public string meta2;
 
     protected override bool ShouldRender() => shouldRender;
 
     protected override async Task OnInitializedAsync()
     {
-        // create request object
-        var request = new HttpRequestMessage(HttpMethod.Get, "https://remote.proffix.net:11011/pxapi/V4/PRO/Login");
+        await GetSessionId();
+        await GetDocument();
+    }
 
-        Login login = new Login
-            {
-                Benutzer = "Gast",
-                Passwort = "16ec7cb001be0525f9af1a96fd5ea26466b2e75ef3e96e881bcb7149cd7598da",
-                Datenbank = { Name = "DEMODB"},
-                Module = { "VOL" }
-            };
-        // set request body
-        string serializedString = System.Text.Json.JsonSerializer.Serialize(login);
-        request.Content = new String(serializedString);
-        //request.Headers.Authorization = new AuthenticationHeaderValue("Gast", "my-token");
+    public async Task GetSessionId()
+    {
+        // define Logindata for authentification
+        var login = new Login("Admin", "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918", new Datenbank("DEMODB"), new List<string> { "VOL" });
 
-        request.Headers.Add("Accept", "application/json");
-        request.Headers.Add("User-Agent", "HttpClientFactory-Sample");
+        // make json
+        var json = JsonConvert.SerializeObject(login);
+        var data = new StringContent(json, Encoding.UTF8, "application/json");
 
-        var client = ClientFactory.CreateClient();
+        // define url
+        var url = "https://dev.wato-soft.ch:44341/pxapi/v4/PRO/Login";
+        var client = new HttpClient();
 
-        var response = await client.SendAsync(request);
 
-        if (response.IsSuccessStatusCode)
+        HttpResponseMessage response = await client.PostAsync(url, data);
+
+        //var sessionId = GetSessionID(response);
+
+        HttpHeaders headers = response.Headers;
+
+        // Read session key header
+        if (headers.TryGetValues("PxSessionId", out var values))
         {
-            //using var responseStream = await response.Content.ReadAsStreamAsync();
-            //branches = await JsonSerializer.DeserializeAsync
-           //     <IEnumerable<GitHubBranch>>(responseStream);
+            // return session key
+            session = values.First();
         }
         else
         {
             getBranchesError = true;
         }
 
+
         shouldRender = true;
     }
 
-    public class GitHubBranch
+    public async Task GetDocument()
     {
-        [JsonPropertyName("name")]
-        public string Name { get; set; }
+        var url2 = "https://dev.wato-soft.ch:44341/pxapi/v4/AUF/Dokument/3";
+        var client = new HttpClient();
+        client.DefaultRequestHeaders.Add("PxSessionId", session);
+
+        HttpResponseMessage response2 = await client.GetAsync(url2);
+
+        HttpContent httpContent = response2.Content;
+
+        string jsonContent = httpContent.ReadAsStringAsync().Result;
+
+        JObject result = JObject.Parse(jsonContent);
+
+        var dokumentNr = result["DokumentNr"];
+        var referenzText = result["Referenztext"];
+
+
+        meta1 = dokumentNr.ToString();
+        meta2 = referenzText.ToString();
+
     }
 }
