@@ -9,7 +9,7 @@
 @using System.Net.Http:
 @using System.Reflection
 @using Newtonsoft.Json.Linq
-
+@using System.Diagnostics
 @inject IHttpClientFactory ClientFactory
 
 
@@ -23,28 +23,78 @@
 }
 else
 {
-    @session
+    <br />
+    <p>Session-ID: @session</p>
     <br />
     <p>
         Dokumentennummer: @meta1
         <br />
-        Referenztext: @meta2    
+        Referenztext: @meta2
     </p>
+
+    <div>
+        @*<ul>
+    @if (jContentList == null)
+    {
+    <p><em>Loading...</em></p>
+    }
+    else if (jContentList != null)
+    {
+    @foreach (var dictionary in jContentList)
+    {
+    <p>Dokuemntnummer: @dictionary.ElementAt(0).Value</p>
+    }
+    }
+    </ul>*@
+    </div>
+    <div>
+        @if (jContentList == null)
+        {
+            <p><em>Loading...</em></p>
+        }
+        else if (jContentList != null)
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Dokumentennummer</th>
+                        <th>Referenztext</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var dictionary in jContentList)
+                    {
+                        <tr>
+                            <td>@dictionary.ElementAt(0).Value</td>
+                            <td>@dictionary.ElementAt(1).Value</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+
+    </div>
 }
 
 @code {
     private bool getBranchesError;
-    private bool shouldRender;
+    private bool shouldRender = true;
     public string session;
     public string meta1;
     public string meta2;
+    public bool waitforme = false;
+    public List<Dictionary<string, string>> jContentList;
+
 
     protected override bool ShouldRender() => shouldRender;
+
 
     protected override async Task OnInitializedAsync()
     {
         await GetSessionId();
         await GetDocument();
+        await GetAllDocument();
+
     }
 
     public async Task GetSessionId()
@@ -77,9 +127,6 @@ else
         {
             getBranchesError = true;
         }
-
-
-        shouldRender = true;
     }
 
     public async Task GetDocument()
@@ -102,6 +149,35 @@ else
 
         meta1 = dokumentNr.ToString();
         meta2 = referenzText.ToString();
+    }
 
+    public async Task GetAllDocument()
+    {
+        var url3 = "https://dev.wato-soft.ch:44341/pxapi/v4/AUF/Dokument?fields=DokumentNr,Referenztext&limit=0";
+
+        var client = new HttpClient();
+        client.DefaultRequestHeaders.Add("PxSessionId", session);
+
+
+        HttpResponseMessage response2 = await client.GetAsync(url3);
+
+        HttpContent httpContent = response2.Content;
+
+
+        string jsonContent = httpContent.ReadAsStringAsync().Result;
+
+
+        //Parse Json-Array
+        JArray jArrayContent = JArray.Parse(jsonContent);
+
+        jContentList = JsonConvert.DeserializeObject<List<Dictionary<string, string>>>(jsonContent);
+        foreach (var dictionary in jContentList)
+        {
+            //Get Values           v--Index
+            var dokumentNr = dictionary.ElementAt(1).Value;
+            Console.Write(dokumentNr);
+        }
+
+        waitforme = true;
     }
 }
