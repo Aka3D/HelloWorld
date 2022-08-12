@@ -9,6 +9,5 @@ namespace HelloWorld.Model
     public class EditformModel
     {
         public string Task { get; set; }
-        public bool IsComplete { get; set; }
     }
 }

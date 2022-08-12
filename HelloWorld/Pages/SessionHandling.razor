@@ -1,0 +1,119 @@
+﻿@page "/sessionhandling"
+
+<h3>SessionHandling</h3>
+
+<div class="row">
+    <div class="col-md-5">
+        <div class="row">
+            <h3>Anmelden</h3>
+            <h6>______________________________________________________</h6>
+            <h6>Einloggen mit Benutzername und Passwort</h6>
+            <br />
+            <EditForm Model="@newLoginSessionModel">
+                <DataAnnotationsValidator />
+                <div class="col-sm-5">
+                    <label>Benutzername</label><br />
+                    <InputText @bind-Value="username" style="width:100%;"></InputText>
+                </div>
+                <div class="col-sm-5">
+                    <label>Passwort</label><br />
+                    <InputText @bind-Value="password" type="password" style="width:100%;"></InputText>
+                </div>
+
+                <label>
+                    Logged in: @status
+                </label>
+
+                <br />
+                <button  @onclick="LogIn">Anmelden</button>
+                <button @onclick="Logout">Abmelden</button>
+            </EditForm>
+
+            
+        </div>
+        <br />
+    </div>
+
+
+    <div class="col-md-5">
+        <div class="row">
+            <h3>Registrieren</h3>
+            <h6>______________________________________________________</h6>
+            <h6>Registrieren mit Benutzername und Passwort</h6>
+            <br />
+        </div>
+
+        <div class="row">
+            <EditForm Model="@newLoginSessionModel" OnValidSubmit="Register" OnInvalidSubmit="RegisterFailed">
+                <DataAnnotationsValidator />
+                <div class="col-sm-5">
+                    <label>Benutzername</label><br />
+                    <InputText @bind-Value="newLoginSessionModel.UserName" style="width:100%;"></InputText>
+                </div>
+                <div class="col-sm-5">
+                    <label>Passwort</label><br />
+                    <InputText @bind-Value="newLoginSessionModel.Password" type="password" style="width:100%;"></InputText>
+                </div>
+
+                <label>
+                    @newLoginSessionModel.UserName
+                    @newLoginSessionModel.Password
+                </label>
+
+                <br />
+                <button type="submit">Register</button>
+            </EditForm>
+
+            <div class="col-sm-5">
+                <div class="row">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+@code {
+    private string username;
+    private string password;
+    private bool status = false;
+    private List<LoginSessionModel> LoginSessionList = new List<LoginSessionModel>();
+    private LoginSessionModel newLoginSessionModel = new LoginSessionModel();
+
+    private void Logout()
+    {
+        
+        status = false;
+        
+    }
+
+    private void Register()
+    {
+        LoginSessionList.Add(newLoginSessionModel);
+    }
+
+    private void LogIn()
+    {
+        var password1 = newLoginSessionModel.Password;
+        var username1 = newLoginSessionModel.UserName;
+        if (username == username1 & password == password1)
+        {
+            status = true;
+        }
+        else
+        {
+            status = false;
+        }
+    }
+
+    private void RegisterFailed()
+    {
+
+    }
+
+    private void LogInFailed()
+    {
+        status = false;
+    }
+}
